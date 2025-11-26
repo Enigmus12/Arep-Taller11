@@ -51,58 +51,83 @@ la solucion implementa una plataforma web con autenticación gestionada mediante
 5. Spring Boot guarda el usuario en MongoDB.
 6. El usuario es redirigido a una página interna que confirma el acceso.
 
-## 2. Product Backlog basado en tu proyecto real
+## 2. Product Backlog 
 
-### Épica 1 — Autenticación
+### Épica 1: Autenticación de Usuarios 
 
-- US-1: Como usuario quiero iniciar sesión manualmente usando email y contraseña. → 5 SP
-- US-2: Como usuario quiero iniciar sesión con Google para no crear nuevas credenciales. → 5 SP
-- US-3: Como usuario quiero iniciar sesión con Facebook. → 5 SP
-- US-4: Como usuario quiero iniciar sesión con Amazon. → 5 SP
-- US-5: Como sistema quiero recibir el token de Cognito y validar acceso del usuario. → 3 SP
-### Épica 2 — Registro de Usuarios
+- US-001 (5 pts): Como usuario, quiero registrarme manualmente para acceder al sistema
+- US-002 (3 pts): Como usuario, quiero iniciar sesión con mi email/contraseña
+- US-003 (8 pts): Como usuario, quiero autenticarme con Google/Facebook/Amazon para acceso rápido
+- US-004 (2 pts): Como usuario registrado, quiero ver una página de bienvenida
 
-- US-6: Como usuario quiero que el sistema me registre automáticamente tras mi primer login. → 3 SP
-- US-7: Como backend quiero recibir datos del usuario autenticado y guardarlos en MongoDB. → 5 SP
-- US-8: Como sistema quiero comprobar si el usuario ya existe para evitar duplicados. → 3 SP
-### Épica 3 — Página interna
+**Subtotal implementado:** ~18 story points
 
-- US-9: Como usuario autenticado quiero ver una pantalla de bienvenida con mi estado. → 1 SP
-- US-10: Como sistema quiero redirigir al usuario autenticado a la página privada. → 2 SP
-### Épica 4 — Infraestructura básica
+---
 
-- US-11: Configurar conexión segura Cognito ↔ Frontend (OAuth). → 5 SP
-- US-12: Configurar API Spring Boot → MongoDB. → 3 SP
-**Total story points:**
+## Lo que FALTA para el sistema municipal completo
 
-5+5+5+5+3+3+5+3+1+2+5+3 = 45 story points
+### Épica 2: Gestión de Solicitudes Ciudadanas
 
-## 3. Presupuesto Scrum basado en la estimación
+- US-005 (8 pts): Como ciudadano, quiero reportar un problema (bache, alumbrado, basura) con descripción y ubicación
+- US-006 (5 pts): Como ciudadano, quiero adjuntar fotos a mi reporte
+- US-007 (3 pts): Como ciudadano, quiero ver el listado de mis solicitudes
+- US-008 (5 pts): Como ciudadano, quiero ver el estado de cada solicitud (pendiente, en proceso, resuelta)
+- US-009 (3 pts): Como ciudadano, quiero recibir notificaciones de cambios de estado
+
+### Épica 3: Panel Administrativo
+
+- US-010 (5 pts): Como administrador, quiero ver todas las solicitudes pendientes
+- US-011 (8 pts): Como administrador, quiero asignar solicitudes a departamentos
+- US-012 (5 pts): Como administrador, quiero cambiar el estado de una solicitud
+- US-013 (3 pts): Como administrador, quiero filtrar solicitudes por tipo/fecha/estado
+- US-014 (8 pts): Como administrador, quiero ver reportes de tiempos de resolución
+
+### Épica 4: Comunicación
+
+- US-015 (5 pts): Como ciudadano, quiero comentar en mi solicitud
+- US-016 (5 pts): Como administrador, quiero responder comentarios
+
+### Épica 5: Geolocalización
+
+- US-017 (8 pts): Como ciudadano, quiero marcar la ubicación en un mapa
+- US-018 (5 pts): Como administrador, quiero ver solicitudes en un mapa
+
+**Total backlog pendiente:** ~68 story points  
+**Total proyecto completo:** ~86 story points
+
+---
+
+## 3. Presupuesto de Desarrollo
 
 ### Supuestos
 
-- Sprint: 2 semanas
-- Team velocity inicial: 25–30 SP por sprint
-- Tu backlog: 45 SP
+- Velocidad del equipo: 20 story points por sprint (2 semanas)
+- Duración sprint: 2 semanas
+- Trabajo completado: 18 story points (1 sprint aprox.)
+- Trabajo pendiente: 68 story points
 
-### Número de sprints necesarios
+### Composición del Equipo
 
-45 SP / 30 SP por sprint ≈ 1.5 sprints → se redondea a 2 sprints
+| Rol                     | Cantidad | Tarifa/semana | Costo por sprint (2 sem) |
+| ----------------------- | -------- | ------------- | ------------------------ |
+| Frontend Dev (React)    | 1        | $800          | $1,600                   |
+| Backend Dev (Java)      | 1        | $900          | $1,800                   |
+| Full Stack Dev          | 1        | $850          | $1,700                   |
+| QA Engineer             | 1        | $600          | $1,200                   |
+| Product Manager         | 0.5      | $1,000        | $1,000                   |
+| DevOps                  | 0.5      | $900          | $900                     |
+| **TOTAL por sprint**    |          |               | **$8,200**               |
 
-### Costos de roles por sprint (ejemplo mínimo viable)
+### Cálculo de Sprints
 
-| Rol                  | Costo/Hora | Horas/Sprint | Total por sprint |
-| -------------------- | ---------- | ------------ | ---------------- |
-| Frontend Dev         | $35        | 80 h         | $2,800           |
-| Backend Dev          | $40        | 80 h         | $3,200           |
-| QA (mínimo)          | $25        | 40 h         | $1,000           |
-| PM/PO                | $50        | 20 h         | $1,000           |
-| **Total por sprint** |            |              | **$8,000**       |
+**Sprints necesarios = Story points pendientes / Velocidad**
+
+Sprints necesarios = 68 / 20 = 3.4 sprints ≈ **4 sprints**
 
 ### Costo total del proyecto
 
-2 sprints × $8,000 = $16,000
+4 sprints × $8,200 = **$32,800**
 
 ### Con contingencia del 15%
 
-→ $16,000 × 1.15 = $18,400
+→ $32,800 × 1.15 = **$37,720**
